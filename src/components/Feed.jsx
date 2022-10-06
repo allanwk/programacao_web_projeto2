@@ -1,199 +1,92 @@
 /* eslint jsx-a11y/anchor-is-valid: 0 */
 /* eslint jsx-a11y/alt-text: 0 */
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Feed() {
+  const [ news, setNews ] = useState([]);
+
+  const truncate = (str, max, suffix) => str.length < max ? str : `${str.substr(0, str.substr(0, max - suffix.length).lastIndexOf(' '))}${suffix}`;
+
   useEffect(() => {
-    const url = `https://api.currentsapi.services/v1/latest-news?language=en&apiKey=${process.env.REACT_APP_API_KEY}`;
+    const url = `https://api.currentsapi.services/v1/search?language=en&apiKey=${process.env.REACT_APP_API_KEY}&category=technology,programming,science,business`;
     fetch(url)
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        const filteredNews = data.news.filter(n => n.image !== "None" && n.title.length > 10 && n.description.length > 10);
+        setNews(filteredNews);
+      });
   }, []);
 
   return (
     <section id="stories">
       <div className="main-stories">
         <div className="main-left">
-          <a href="#">
-            <img src="assets/fishes.webp" />
+          { news.length > 0 ?
+          <a href={news[0].url}>
+            <img src={news[0].image} />
             <div className="text-container">
-              <h1>Gone smishing: Scams move to the workplace</h1>
-              <h2>Ignore the gift card request from your boss (and ours).</h2>
-              <p className="author">Sherry Qin</p>
+              <h1>{truncate(news[0].title, 50, "...")}</h1>
+              <h2>{truncate(news[0].description, 100, "...")}</h2>
+              <p className="author">{news[0].author}</p>
             </div>
           </a>
+          :
+          null
+          }
         </div>
 
         <div className="main-right">
-          <a href="#" className="wrapper-link">
-            <div className="text">
-              <h1 className="headline">
-                Meet the guy uncovering crypto’s biggest thefts
-              </h1>
-              <h2 className="subtitle">
-                Rich Sanders is the closest thing the cryptoworld has to 911.
-              </h2>
-              <p className="author">Amanda Hoover</p>
-            </div>
-            <div className="img-container">
-              <img src="assets/crypto.webp" />
-            </div>
-          </a>
-          <a href="#" className="wrapper-link">
-            <div className="text">
-              <h1 className="headline">
-                Why rich people are shopping at Walmart
-              </h1>
-              <h2 className="subtitle">They’re also eating at Applebee’s.</h2>
-              <p className="author">ABIGAIL RUBENSTEIN</p>
-            </div>
-            <div className="img-container">
-              <img src="assets/knees.webp" />
-            </div>
-          </a>
-          <a href="#" className="wrapper-link">
-            <div className="text">
-              <h1 className="headline">
-                Haute couture is moving from Paris to the metaverse
-              </h1>
-              <h2 className="subtitle">Fashion's next frontier is digital.</h2>
-              <p className="author">SHERRY QIN</p>
-            </div>
-            <div className="img-container">
-              <img src="assets/haute.gif" />
-            </div>
-          </a>
+          { news.slice(1, 4).map((n) => (
+            <a href={n.url} className="wrapper-link" key={n.id}>
+              <div className="text">
+                <h1 className="headline">
+                  {truncate(n.title, 50, "...")}
+                </h1>
+                <h2 className="subtitle">
+                  {truncate(n.description, 80, "...")}
+                </h2>
+                <p className="author">{n.author}</p>
+              </div>
+              <div className="img-container">
+                <img src={n.image} />
+              </div>
+            </a>
+          ))}
         </div>
       </div>
 
       <div className="latest-stories">
         <h2>Latest Stories</h2>
         <div className="latest-stories-grid">
-          <a href="#" className="card wrapper-link">
-            <img src="assets/crypto.webp" />
-            <p className="tag">International</p>
-            <h1 className="headline">
-              Meet the guy uncovering crypto’s biggest thefts
-            </h1>
-            <p className="author light">Amanda Hoover</p>
-          </a>
-
-          <a href="#" className="card wrapper-link">
-            <img src="assets/knees.webp" />
-            <p className="tag">International</p>
-            <h1 className="headline">
-              Why rich people are shopping at Walmart
-            </h1>
-            <p className="author light">ABIGAIL RUBENSTEIN</p>
-          </a>
-
-          <a href="#" className="card wrapper-link">
-            <img src="assets/haute.gif" />
-            <p className="tag">International</p>
-            <h1 className="headline">
-              Haute couture is moving from Paris to the metaverse
-            </h1>
-            <p className="author light">SHERRY QIN</p>
-          </a>
-
-          <a href="#" className="card wrapper-link">
-            <img src="assets/crypto.webp" />
-            <p className="tag">International</p>
-            <h1 className="headline">
-              Meet the guy uncovering crypto’s biggest thefts
-            </h1>
-            <p className="author light">Amanda Hoover</p>
-          </a>
-
-          <a href="#" className="card wrapper-link">
-            <img src="assets/knees.webp" />
-            <p className="tag">International</p>
-            <h1 className="headline">
-              Why rich people are shopping at Walmart
-            </h1>
-            <p className="author light">ABIGAIL RUBENSTEIN</p>
-          </a>
-
-          <a href="#" className="card wrapper-link">
-            <img src="assets/haute.gif" />
-            <p className="tag">International</p>
-            <h1 className="headline">
-              Haute couture is moving from Paris to the metaverse
-            </h1>
-            <p className="author light">SHERRY QIN</p>
-          </a>
+          { news.slice(4, 10).map(n => (
+            <a href={n.url} className="card wrapper-link">
+              <img src={n.image} />
+              <p className="tag">{n.category}</p>
+              <h1 className="headline">
+                {truncate(n.title, 50, "...")}
+              </h1>
+              <p className="author light">{n.author}</p>
+            </a>
+          ))}
         </div>
       </div>
 
       <div className="more-stories">
         <h2>More Stories</h2>
         <div className="more-stories-grid">
-          <a className="sideways-card wrapper-link" href="#">
-            <img src="assets/crypto.webp" />
-            <div className="side-text">
-              <p className="tag">International</p>
-              <h1 className="headline">
-                Meet the guy uncovering crypto’s biggest thefts
-              </h1>
-              <p className="author light">Amanda Hoover</p>
-            </div>
-          </a>
-
-          <a className="sideways-card wrapper-link" href="#">
-            <img src="assets/knees.webp" />
-            <div className="side-text">
-              <p className="tag">International</p>
-              <h1 className="headline">
-                Meet the guy uncovering crypto’s biggest thefts
-              </h1>
-              <p className="author light">Amanda Hoover</p>
-            </div>
-          </a>
-
-          <a className="sideways-card wrapper-link" href="#">
-            <img src="assets/haute.gif" />
-            <div className="side-text">
-              <p className="tag">International</p>
-              <h1 className="headline">
-                Haute couture is moving from Paris to the metaverse
-              </h1>
-              <p className="author light">SHERRY QIN</p>
-            </div>
-          </a>
-
-          <a className="sideways-card wrapper-link" href="#">
-            <img src="assets/crypto.webp" />
-            <div className="side-text">
-              <p className="tag">International</p>
-              <h1 className="headline">
-                Meet the guy uncovering crypto’s biggest thefts
-              </h1>
-              <p className="author light">Amanda Hoover</p>
-            </div>
-          </a>
-
-          <a className="sideways-card wrapper-link" href="#">
-            <img src="assets/knees.webp" />
-            <div className="side-text">
-              <p className="tag">International</p>
-              <h1 className="headline">
-                Meet the guy uncovering crypto’s biggest thefts
-              </h1>
-              <p className="author light">Amanda Hoover</p>
-            </div>
-          </a>
-
-          <a className="sideways-card wrapper-link" href="#">
-            <img src="assets/haute.gif" />
-            <div className="side-text">
-              <p className="tag">International</p>
-              <h1 className="headline">
-                Haute couture is moving from Paris to the metaverse
-              </h1>
-              <p className="author light">SHERRY QIN</p>
-            </div>
-          </a>
+          { news.slice(10, 16).map(n => (
+            <a className="sideways-card wrapper-link" href={n.url}>
+              <img src={n.image} />
+              <div className="side-text">
+                <p className="tag">{n.category}</p>
+                <h1 className="headline">
+                  {truncate(n.title, 50, "...")}
+                </h1>
+                <p className="author light">{n.author}</p>
+              </div>
+            </a>
+          ))}
         </div>
       </div>
     </section>

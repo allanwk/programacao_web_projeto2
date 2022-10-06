@@ -2,6 +2,8 @@
 /* eslint jsx-a11y/alt-text: 0 */
 
 import phoneImage from "../assets/phone.svg";
+import businessImage from '../assets/business.webp';
+import logo from '../assets/logo.webp';
 import Login from "./Login";
 import { useState, useEffect } from "react";
 
@@ -33,7 +35,7 @@ function Header({ loggedIn, setLoggedIn }) {
           <a href="#" className="logo-wrapper">
             <img
               className="logo"
-              src="assets/logo.webp"
+              src={logo}
               alt="Morning Brew logo"
             />
           </a>
@@ -114,7 +116,7 @@ function Header({ loggedIn, setLoggedIn }) {
             </div>
           </div>
           <a className="side wrapper-link" href="#">
-            <img src="assets/business.webp" alt="an ad to a business course" />
+            <img src={businessImage} alt="an ad to a business course" />
             <h2 className="side-headline">
               Listen to our Business Casual Podcast
             </h2>

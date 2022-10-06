@@ -1,4 +1,4 @@
-.modal-container{
+.modal-container {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -20,7 +20,7 @@
   gap: 1em;
 }
 
-#login-message{
+#login-message {
   text-align: center;
 }
 
@@ -157,7 +157,8 @@ nav > * {
   max-width: 600px;
 }
 
-.become-smarter h1, .login h1 {
+.become-smarter h1,
+.login h1 {
   font-weight: 900;
   font-size: 36px;
   line-height: 44px;
@@ -272,6 +273,10 @@ nav > * {
   font-size: 20px;
   line-height: 30px;
   font-weight: 400;
+}
+
+img {
+  object-fit: cover;
 }
 
 .main-left img {
@@ -472,7 +477,6 @@ nav > * {
 
   .main-left img {
     max-height: 370px;
-    object-fit: cover;
     border-radius: 0;
   }
 
