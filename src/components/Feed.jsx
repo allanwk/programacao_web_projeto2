@@ -1,3 +1,6 @@
+/* eslint jsx-a11y/anchor-is-valid: 0 */
+/* eslint jsx-a11y/alt-text: 0 */
+
 export default function Feed() {
   return (
     <section id="stories">
