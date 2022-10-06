@@ -6,7 +6,7 @@ import Login from './Login';
 import { useState } from 'react';
 
 function Header() {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(true);
 
   function toggleModal(){
     setModalOpen(!modalOpen);
