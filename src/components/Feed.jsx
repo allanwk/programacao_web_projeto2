@@ -1,182 +1,197 @@
 /* eslint jsx-a11y/anchor-is-valid: 0 */
 /* eslint jsx-a11y/alt-text: 0 */
 
+import { useEffect } from "react";
+
 export default function Feed() {
+  useEffect(() => {
+    const url = `https://api.currentsapi.services/v1/latest-news?language=en&apiKey=${process.env.REACT_APP_API_KEY}`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  }, []);
+
   return (
     <section id="stories">
-      <div class="main-stories">
-        <div class="main-left">
+      <div className="main-stories">
+        <div className="main-left">
           <a href="#">
             <img src="assets/fishes.webp" />
-            <div class="text-container">
+            <div className="text-container">
               <h1>Gone smishing: Scams move to the workplace</h1>
               <h2>Ignore the gift card request from your boss (and ours).</h2>
-              <p class="author">Sherry Qin</p>
+              <p className="author">Sherry Qin</p>
             </div>
           </a>
         </div>
 
-        <div class="main-right">
-          <a href="#" class="wrapper-link">
-            <div class="text">
-              <h1 class="headline">
+        <div className="main-right">
+          <a href="#" className="wrapper-link">
+            <div className="text">
+              <h1 className="headline">
                 Meet the guy uncovering crypto’s biggest thefts
               </h1>
-              <h2 class="subtitle">
+              <h2 className="subtitle">
                 Rich Sanders is the closest thing the cryptoworld has to 911.
               </h2>
-              <p class="author">Amanda Hoover</p>
+              <p className="author">Amanda Hoover</p>
             </div>
-            <div class="img-container">
+            <div className="img-container">
               <img src="assets/crypto.webp" />
             </div>
           </a>
-          <a href="#" class="wrapper-link">
-            <div class="text">
-              <h1 class="headline">Why rich people are shopping at Walmart</h1>
-              <h2 class="subtitle">They’re also eating at Applebee’s.</h2>
-              <p class="author">ABIGAIL RUBENSTEIN</p>
+          <a href="#" className="wrapper-link">
+            <div className="text">
+              <h1 className="headline">
+                Why rich people are shopping at Walmart
+              </h1>
+              <h2 className="subtitle">They’re also eating at Applebee’s.</h2>
+              <p className="author">ABIGAIL RUBENSTEIN</p>
             </div>
-            <div class="img-container">
+            <div className="img-container">
               <img src="assets/knees.webp" />
             </div>
           </a>
-          <a href="#" class="wrapper-link">
-            <div class="text">
-              <h1 class="headline">
+          <a href="#" className="wrapper-link">
+            <div className="text">
+              <h1 className="headline">
                 Haute couture is moving from Paris to the metaverse
               </h1>
-              <h2 class="subtitle">Fashion's next frontier is digital.</h2>
-              <p class="author">SHERRY QIN</p>
+              <h2 className="subtitle">Fashion's next frontier is digital.</h2>
+              <p className="author">SHERRY QIN</p>
             </div>
-            <div class="img-container">
+            <div className="img-container">
               <img src="assets/haute.gif" />
             </div>
           </a>
         </div>
       </div>
 
-      <div class="latest-stories">
+      <div className="latest-stories">
         <h2>Latest Stories</h2>
-        <div class="latest-stories-grid">
-          <a href="#" class="card wrapper-link">
+        <div className="latest-stories-grid">
+          <a href="#" className="card wrapper-link">
             <img src="assets/crypto.webp" />
-            <p class="tag">International</p>
-            <h1 class="headline">
+            <p className="tag">International</p>
+            <h1 className="headline">
               Meet the guy uncovering crypto’s biggest thefts
             </h1>
-            <p class="author light">Amanda Hoover</p>
+            <p className="author light">Amanda Hoover</p>
           </a>
 
-          <a href="#" class="card wrapper-link">
+          <a href="#" className="card wrapper-link">
             <img src="assets/knees.webp" />
-            <p class="tag">International</p>
-            <h1 class="headline">Why rich people are shopping at Walmart</h1>
-            <p class="author light">ABIGAIL RUBENSTEIN</p>
+            <p className="tag">International</p>
+            <h1 className="headline">
+              Why rich people are shopping at Walmart
+            </h1>
+            <p className="author light">ABIGAIL RUBENSTEIN</p>
           </a>
 
-          <a href="#" class="card wrapper-link">
+          <a href="#" className="card wrapper-link">
             <img src="assets/haute.gif" />
-            <p class="tag">International</p>
-            <h1 class="headline">
+            <p className="tag">International</p>
+            <h1 className="headline">
               Haute couture is moving from Paris to the metaverse
             </h1>
-            <p class="author light">SHERRY QIN</p>
+            <p className="author light">SHERRY QIN</p>
           </a>
 
-          <a href="#" class="card wrapper-link">
+          <a href="#" className="card wrapper-link">
             <img src="assets/crypto.webp" />
-            <p class="tag">International</p>
-            <h1 class="headline">
+            <p className="tag">International</p>
+            <h1 className="headline">
               Meet the guy uncovering crypto’s biggest thefts
             </h1>
-            <p class="author light">Amanda Hoover</p>
+            <p className="author light">Amanda Hoover</p>
           </a>
 
-          <a href="#" class="card wrapper-link">
+          <a href="#" className="card wrapper-link">
             <img src="assets/knees.webp" />
-            <p class="tag">International</p>
-            <h1 class="headline">Why rich people are shopping at Walmart</h1>
-            <p class="author light">ABIGAIL RUBENSTEIN</p>
+            <p className="tag">International</p>
+            <h1 className="headline">
+              Why rich people are shopping at Walmart
+            </h1>
+            <p className="author light">ABIGAIL RUBENSTEIN</p>
           </a>
 
-          <a href="#" class="card wrapper-link">
+          <a href="#" className="card wrapper-link">
             <img src="assets/haute.gif" />
-            <p class="tag">International</p>
-            <h1 class="headline">
+            <p className="tag">International</p>
+            <h1 className="headline">
               Haute couture is moving from Paris to the metaverse
             </h1>
-            <p class="author light">SHERRY QIN</p>
+            <p className="author light">SHERRY QIN</p>
           </a>
         </div>
       </div>
 
-      <div class="more-stories">
+      <div className="more-stories">
         <h2>More Stories</h2>
-        <div class="more-stories-grid">
-          <a class="sideways-card wrapper-link" href="#">
+        <div className="more-stories-grid">
+          <a className="sideways-card wrapper-link" href="#">
             <img src="assets/crypto.webp" />
-            <div class="side-text">
-              <p class="tag">International</p>
-              <h1 class="headline">
+            <div className="side-text">
+              <p className="tag">International</p>
+              <h1 className="headline">
                 Meet the guy uncovering crypto’s biggest thefts
               </h1>
-              <p class="author light">Amanda Hoover</p>
+              <p className="author light">Amanda Hoover</p>
             </div>
           </a>
 
-          <a class="sideways-card wrapper-link" href="#">
+          <a className="sideways-card wrapper-link" href="#">
             <img src="assets/knees.webp" />
-            <div class="side-text">
-              <p class="tag">International</p>
-              <h1 class="headline">
+            <div className="side-text">
+              <p className="tag">International</p>
+              <h1 className="headline">
                 Meet the guy uncovering crypto’s biggest thefts
               </h1>
-              <p class="author light">Amanda Hoover</p>
+              <p className="author light">Amanda Hoover</p>
             </div>
           </a>
 
-          <a class="sideways-card wrapper-link" href="#">
+          <a className="sideways-card wrapper-link" href="#">
             <img src="assets/haute.gif" />
-            <div class="side-text">
-              <p class="tag">International</p>
-              <h1 class="headline">
+            <div className="side-text">
+              <p className="tag">International</p>
+              <h1 className="headline">
                 Haute couture is moving from Paris to the metaverse
               </h1>
-              <p class="author light">SHERRY QIN</p>
+              <p className="author light">SHERRY QIN</p>
             </div>
           </a>
 
-          <a class="sideways-card wrapper-link" href="#">
+          <a className="sideways-card wrapper-link" href="#">
             <img src="assets/crypto.webp" />
-            <div class="side-text">
-              <p class="tag">International</p>
-              <h1 class="headline">
+            <div className="side-text">
+              <p className="tag">International</p>
+              <h1 className="headline">
                 Meet the guy uncovering crypto’s biggest thefts
               </h1>
-              <p class="author light">Amanda Hoover</p>
+              <p className="author light">Amanda Hoover</p>
             </div>
           </a>
 
-          <a class="sideways-card wrapper-link" href="#">
+          <a className="sideways-card wrapper-link" href="#">
             <img src="assets/knees.webp" />
-            <div class="side-text">
-              <p class="tag">International</p>
-              <h1 class="headline">
+            <div className="side-text">
+              <p className="tag">International</p>
+              <h1 className="headline">
                 Meet the guy uncovering crypto’s biggest thefts
               </h1>
-              <p class="author light">Amanda Hoover</p>
+              <p className="author light">Amanda Hoover</p>
             </div>
           </a>
 
-          <a class="sideways-card wrapper-link" href="#">
+          <a className="sideways-card wrapper-link" href="#">
             <img src="assets/haute.gif" />
-            <div class="side-text">
-              <p class="tag">International</p>
-              <h1 class="headline">
+            <div className="side-text">
+              <p className="tag">International</p>
+              <h1 className="headline">
                 Haute couture is moving from Paris to the metaverse
               </h1>
-              <p class="author light">SHERRY QIN</p>
+              <p className="author light">SHERRY QIN</p>
             </div>
           </a>
         </div>

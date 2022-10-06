@@ -30,22 +30,26 @@ function Header({ loggedIn, setLoggedIn }) {
       ) : null}
       <header>
         <nav>
-          <a href="#" class="logo-wrapper">
-            <img class="logo" src="assets/logo.webp" alt="Morning Brew logo" />
+          <a href="#" className="logo-wrapper">
+            <img
+              className="logo"
+              src="assets/logo.webp"
+              alt="Morning Brew logo"
+            />
           </a>
-          <div class="nav-links large-screen-only">
+          <div className="nav-links large-screen-only">
             <a href="#">Brands</a>
             <a href="#">Podcasts</a>
             <a href="#">Featured</a>
             <a href="#">Shop</a>
             <a href="#">Courses</a>
           </div>
-          <div class="subscribe large-screen-only">
-            <div class="search-wrapper">
+          <div className="subscribe large-screen-only">
+            <div className="search-wrapper">
               <svg
                 stroke="currentColor"
                 fill="currentColor"
-                stroke-width="0"
+                strokeWidth="0"
                 viewBox="0 0 1024 1024"
                 height="24"
                 width="24"
@@ -57,11 +61,11 @@ function Header({ loggedIn, setLoggedIn }) {
             <svg
               stroke="rgb(28, 127, 242)"
               fill="none"
-              stroke-width="2"
+              strokeWidth="2"
               viewBox="0 0 24 24"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              style={{ "margin-right": "0.45rem", "font-size": "1.12rem" }}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{ marginRight: "0.45rem", fontSize: "1.12rem" }}
               height="1em"
               width="1em"
               xmlns="http://www.w3.org/2000/svg"
@@ -81,11 +85,11 @@ function Header({ loggedIn, setLoggedIn }) {
             )}
           </div>
 
-          <div class="menu-hamburguer small-screen-only">
+          <div className="menu-hamburguer small-screen-only">
             <svg
               stroke="currentColor"
               fill="currentColor"
-              stroke-width="0"
+              strokeWidth="0"
               viewBox="0 0 448 512"
               height="1em"
               width="1em"
@@ -95,32 +99,34 @@ function Header({ loggedIn, setLoggedIn }) {
             </svg>
           </div>
         </nav>
-        <div class="landing-container">
-          <div class="become-smarter">
+        <div className="landing-container">
+          <div className="become-smarter">
             <div>
               <h1>Become smarter in just 5 minutes</h1>
               <p>
                 Get the daily email that makes reading the news enjoyable. Stay
                 informed and entertained, for free.
               </p>
-              <div class="email-input-wrapper">
+              <div className="email-input-wrapper">
                 <input type="email" placeholder="youremail@domain.com" />
                 <button>Try It</button>
               </div>
             </div>
           </div>
-          <a class="side wrapper-link" href="#">
+          <a className="side wrapper-link" href="#">
             <img src="assets/business.webp" alt="an ad to a business course" />
-            <h2 class="side-headline">Listen to our Business Casual Podcast</h2>
-            <p class="side-description">
+            <h2 className="side-headline">
+              Listen to our Business Casual Podcast
+            </h2>
+            <p className="side-description">
               Journalist Nora Ali brings you conversations with creators,
               thinkers, and innovators who can tell you what it all means, and
               why you should care.
             </p>
-            <p class="author bold">IN PARTNERSHIP WITH REAL VISION</p>
+            <p className="author bold">IN PARTNERSHIP WITH REAL VISION</p>
           </a>
         </div>
-        <a class="latest-banner wrapper-link" href="#">
+        <a className="latest-banner wrapper-link" href="#">
           <img src={phoneImage} alt="A phone" />
           <b>LATEST NEWSLETTER:</b>
           <span>How the climate bill will transform America’s homes...</span>
