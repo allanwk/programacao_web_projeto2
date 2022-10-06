@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Login({ toggleModal }) {
+export default function Login({ toggleModal, setLoggedIn }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState(null);
@@ -26,12 +26,15 @@ export default function Login({ toggleModal }) {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         let response = JSON.parse(xhr.responseText);
         console.log(response);
-        if("token" in response){
-            localStorage.setItem("token", response.token);
-            setMessage("Logged in successfully!");
-            setTimeout(toggleModal, 500);
+        if ("token" in response) {
+          localStorage.setItem("token", response.token);
+          setMessage("Logged in successfully!");
+          setTimeout(() => {
+            toggleModal();
+            setLoggedIn(true);
+          }, 500);
         } else {
-            setMessage("Invalid credentials!");
+          setMessage("Invalid credentials!");
         }
       }
     };
