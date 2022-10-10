@@ -105,10 +105,19 @@ nav > * {
   width: 60px;
   transition: background-color 200ms ease-out;
   cursor: pointer;
+  position: relative;
 }
 
 .search-wrapper:hover {
   background-color: rgb(244, 244, 244);
+}
+
+.search-wrapper input {
+  position: absolute;
+  width: 200px;
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
 }
 
 .nav-links {
