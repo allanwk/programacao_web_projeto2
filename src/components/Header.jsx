@@ -1,11 +1,9 @@
 /* eslint jsx-a11y/anchor-is-valid: 0 */
 /* eslint jsx-a11y/alt-text: 0 */
 
-import phoneImage from "../assets/phone.svg";
-import businessImage from "../assets/business.webp";
 import logo from "../assets/logo.webp";
 import Login from "./Login";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import PuffLoader from "react-spinners/PuffLoader";
 
 function Header({
@@ -16,6 +14,8 @@ function Header({
   setReloadNews,
   reloadNews,
   loading,
+  menuOpen,
+  setMenuOpen,
 }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -133,51 +133,27 @@ function Header({
           </div>
 
           <div className="menu-hamburguer small-screen-only">
-            <svg
-              stroke="currentColor"
-              fill="currentColor"
-              strokeWidth="0"
-              viewBox="0 0 448 512"
-              height="1em"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              className="menu-icon-container"
+              onClick={() => {
+                setMenuOpen(!menuOpen);
+                console.log(menuOpen);
+              }}
             >
-              <path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path>
-            </svg>
-          </div>
-        </nav>
-        <div className="landing-container">
-          <div className="become-smarter">
-            <div>
-              <h1>Become smarter in just 5 minutes</h1>
-              <p>
-                Get the daily email that makes reading the news enjoyable. Stay
-                informed and entertained, for free.
-              </p>
-              <div className="email-input-wrapper">
-                <input type="email" placeholder="youremail@domain.com" />
-                <button>Try It</button>
-              </div>
+              <svg
+                stroke="currentColor"
+                fill="currentColor"
+                strokeWidth="0"
+                viewBox="0 0 448 512"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path>
+              </svg>
             </div>
           </div>
-          <a className="side wrapper-link" href="#">
-            <img src={businessImage} alt="an ad to a business course" />
-            <h2 className="side-headline">
-              Listen to our Business Casual Podcast
-            </h2>
-            <p className="side-description">
-              Journalist Nora Ali brings you conversations with creators,
-              thinkers, and innovators who can tell you what it all means, and
-              why you should care.
-            </p>
-            <p className="author bold">IN PARTNERSHIP WITH REAL VISION</p>
-          </a>
-        </div>
-        <a className="latest-banner wrapper-link" href="#">
-          <img src={phoneImage} alt="A phone" />
-          <b>LATEST NEWSLETTER:</b>
-          <span>How the climate bill will transform America’s homes...</span>
-        </a>
+        </nav>
       </header>
     </>
   );
