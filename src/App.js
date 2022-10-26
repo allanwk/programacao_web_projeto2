@@ -10,9 +10,13 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState(null);
-  const [reloadNews, setReloadNews] = useState(0);
+  const [reloadNewsIdx, setReloadNews] = useState(0);
   const [menuOpen, setMenuOpen] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
+
+  function reloadNews() {
+    setReloadNews(reloadNewsIdx + 1);
+  }
 
   return (
     <div className="App">
@@ -21,7 +25,6 @@ function App() {
         setLoggedIn={setLoggedIn}
         setQuery={setQuery}
         query={query}
-        setReloadNews={setReloadNews}
         reloadNews={reloadNews}
         loading={loading}
         setLoading={setLoading}
@@ -35,11 +38,14 @@ function App() {
         setMenuOpen={setMenuOpen}
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}
+        query={query}
+        setQuery={setQuery}
+        reloadNews={reloadNews}
       />
       <LandingContainer />
       <Feed
         query={query}
-        reloadNews={reloadNews}
+        reloadNewsIdx={reloadNewsIdx}
         loading={loading}
         setLoading={setLoading}
       />

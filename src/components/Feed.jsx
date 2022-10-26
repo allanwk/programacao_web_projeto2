@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function Feed({ query, reloadNews, loading, setLoading }) {
+export default function Feed({ query, reloadNewsIdx, loading, setLoading }) {
   const [news, setNews] = useState([]);
 
   const truncate = (str, max, suffix) =>
@@ -14,27 +14,27 @@ export default function Feed({ query, reloadNews, loading, setLoading }) {
           str.substr(0, max - suffix.length).lastIndexOf(" ")
         )}${suffix}`;
 
-  // useEffect(() => {
-  //   let url;
-  //   if (!query) {
-  //     url = `https://api.currentsapi.services/v1/search?language=en&apiKey=${process.env.REACT_APP_API_KEY}&category=technology,programming,science,business`;
-  //   } else {
-  //     url = `https://api.currentsapi.services/v1/search?language=en&apiKey=${process.env.REACT_APP_API_KEY}&keywords=${query}&limit=20`;
-  //   }
-  //   setLoading(true);
-  //   fetch(url)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       const filteredNews = data.news.filter(
-  //         (n) =>
-  //           n.image !== "None" &&
-  //           n.title.length > 10 &&
-  //           n.description.length > 10
-  //       );
-  //       setNews(filteredNews);
-  //       setLoading(false);
-  //     });
-  // }, [reloadNews]);
+  useEffect(() => {
+    let url;
+    if (!query) {
+      url = `https://api.currentsapi.services/v1/search?language=en&apiKey=${process.env.REACT_APP_API_KEY}&category=technology,programming,science,business`;
+    } else {
+      url = `https://api.currentsapi.services/v1/search?language=en&apiKey=${process.env.REACT_APP_API_KEY}&keywords=${query}&limit=20`;
+    }
+    setLoading(true);
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        const filteredNews = data.news.filter(
+          (n) =>
+            n.image !== "None" &&
+            n.title.length > 10 &&
+            n.description.length > 10
+        );
+        setNews(filteredNews);
+        setLoading(false);
+      });
+  }, [reloadNewsIdx]);
 
   return (
     <section id="stories">

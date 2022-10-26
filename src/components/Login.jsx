@@ -31,7 +31,6 @@ export default function Login({ toggleModal, setLoggedIn }) {
       // Call a function when the state changes.
       if (xhr.readyState === XMLHttpRequest.DONE) {
         let response = JSON.parse(xhr.responseText);
-        console.log(response);
         if ("token" in response) {
           localStorage.setItem("token", response.token);
           setMessage("Logged in successfully!");
@@ -49,12 +48,12 @@ export default function Login({ toggleModal, setLoggedIn }) {
 
   return (
     <div id="modal-container">
-      <form onSubmit={handleSubmit} class="login">
+      <form onSubmit={handleSubmit} className="login">
         <h1 id="login-title">Welcome!</h1>
         <label for="login-email">E-mail</label>
         <input
           required
-          minlength="3"
+          minLength="3"
           id="login-email"
           onChange={handleEmail}
           type="email"
@@ -63,7 +62,7 @@ export default function Login({ toggleModal, setLoggedIn }) {
         <label for="login-password">Password</label>
         <input
           required
-          minlength="3"
+          minLength="3"
           id="login-password"
           onChange={handlePassword}
           type="password"

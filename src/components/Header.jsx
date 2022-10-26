@@ -11,7 +11,6 @@ function Header({
   setLoggedIn,
   setQuery,
   query,
-  setReloadNews,
   reloadNews,
   loading,
   menuOpen,
@@ -27,7 +26,7 @@ function Header({
 
   function handleSearch(e) {
     e.preventDefault();
-    setReloadNews(reloadNews + 1);
+    reloadNews();
     setSearchOpen(false);
   }
 
