@@ -16,8 +16,9 @@ function Header({
   loading,
   menuOpen,
   setMenuOpen,
+  modalOpen,
+  setModalOpen,
 }) {
-  const [modalOpen, setModalOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
   function updateQuery(e) {
@@ -137,7 +138,6 @@ function Header({
               className="menu-icon-container"
               onClick={() => {
                 setMenuOpen(!menuOpen);
-                console.log(menuOpen);
               }}
             >
               <svg

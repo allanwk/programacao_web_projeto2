@@ -1,6 +1,11 @@
 import "../menu.css";
 
-export default function MobileMenu({ menuOpen, setMenuOpen }) {
+export default function MobileMenu({
+  menuOpen,
+  setMenuOpen,
+  modalOpen,
+  setModalOpen,
+}) {
   const menuItems = [
     {
       name: "Brew Brands",
@@ -21,6 +26,10 @@ export default function MobileMenu({ menuOpen, setMenuOpen }) {
     },
   ];
 
+  function toggleModal() {
+    setModalOpen(!modalOpen);
+  }
+
   return (
     <div className={"menu" + (menuOpen ? "" : " offset")}>
       <div className="menu-container">
@@ -29,12 +38,10 @@ export default function MobileMenu({ menuOpen, setMenuOpen }) {
           <svg
             stroke="currentColor"
             fill="none"
-            stroke-width="2"
+            strokeWidth="2"
             viewBox="0 0 24 24"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            tabindex="0"
-            class="style__SearchArrow-sc-8d9dc58b-7 bkzEpC"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             height="1em"
             width="1em"
             xmlns="http://www.w3.org/2000/svg"
@@ -44,16 +51,24 @@ export default function MobileMenu({ menuOpen, setMenuOpen }) {
           </svg>
         </div>
         <ul className="menu-items">
-          {menuItems.map((category) => (
-            <li>
+          {menuItems.map((category, index) => (
+            <li key={index}>
               <p className="category">{category.name}</p>
-              {category.items.map((item) => (
-                <p className="item">{item}</p>
+              {category.items.map((item, itemIndex) => (
+                <p className="item" key={`i:${itemIndex}`}>
+                  {item}
+                </p>
               ))}
             </li>
           ))}
         </ul>
-        <div className="mobile-login-button">
+        <div
+          className="mobile-login-button"
+          onClick={() => {
+            toggleModal();
+            setMenuOpen(false);
+          }}
+        >
           <svg
             stroke="rgb(255, 255, 255)"
             fill="none"

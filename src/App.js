@@ -12,6 +12,7 @@ function App() {
   const [query, setQuery] = useState(null);
   const [reloadNews, setReloadNews] = useState(0);
   const [menuOpen, setMenuOpen] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <div className="App">
@@ -26,8 +27,15 @@ function App() {
         setLoading={setLoading}
         menuOpen={menuOpen}
         setMenuOpen={setMenuOpen}
+        modalOpen={modalOpen}
+        setModalOpen={setModalOpen}
       />
-      <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <MobileMenu
+        menuOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
+        modalOpen={modalOpen}
+        setModalOpen={setModalOpen}
+      />
       <LandingContainer />
       <Feed
         query={query}

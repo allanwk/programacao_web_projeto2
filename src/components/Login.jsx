@@ -5,6 +5,12 @@ export default function Login({ toggleModal, setLoggedIn }) {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState(null);
 
+  window.addEventListener("click", (event) => {
+    if (event.target.id === "modal-container") {
+      toggleModal();
+    }
+  });
+
   function handleEmail(e) {
     setEmail(e.target.value);
   }
@@ -42,7 +48,7 @@ export default function Login({ toggleModal, setLoggedIn }) {
   }
 
   return (
-    <div class="modal-container">
+    <div id="modal-container">
       <form onSubmit={handleSubmit} class="login">
         <h1 id="login-title">Welcome!</h1>
         <label for="login-email">E-mail</label>
