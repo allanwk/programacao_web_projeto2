@@ -19,12 +19,12 @@ function App() {
   }
 
   useEffect(() => {
-    if (menuOpen) {
+    if (menuOpen || modalOpen) {
       document.querySelector("html").classList.add("lock-scroll");
-    } else {
+    } else if (!menuOpen && !modalOpen) {
       document.querySelector("html").classList.remove("lock-scroll");
     }
-  }, [menuOpen]);
+  }, [menuOpen, modalOpen]);
 
   return (
     <div className="App">

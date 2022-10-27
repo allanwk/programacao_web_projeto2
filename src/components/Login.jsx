@@ -1,3 +1,4 @@
+import PuffLoader from "react-spinners/PuffLoader";
 import { useState } from "react";
 
 export default function Login({ toggleModal, setLoggedIn }) {
@@ -21,6 +22,7 @@ export default function Login({ toggleModal, setLoggedIn }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    setMessage(<PuffLoader color="white" />);
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "https://reqres.in/api/login", true);
 
@@ -50,7 +52,7 @@ export default function Login({ toggleModal, setLoggedIn }) {
     <div id="modal-container">
       <form onSubmit={handleSubmit} className="login">
         <h1 id="login-title">Welcome!</h1>
-        <label for="login-email">E-mail</label>
+        <label htmlFor="login-email">E-mail</label>
         <input
           required
           minLength="3"
@@ -59,7 +61,7 @@ export default function Login({ toggleModal, setLoggedIn }) {
           type="email"
           placeholder="someone@somewhere.com"
         />
-        <label for="login-password">Password</label>
+        <label htmlFor="login-password">Password</label>
         <input
           required
           minLength="3"

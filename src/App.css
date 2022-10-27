@@ -13,7 +13,7 @@
 }
 
 .login {
-  width: 500px;
+  width: clamp(350px, 50%, 500px);
   margin: 0 auto;
   background-color: rgb(28, 127, 242);
   color: white;
@@ -26,6 +26,8 @@
 
 #login-message {
   text-align: center;
+  display: grid;
+  place-content: center;
 }
 
 .login input {
@@ -55,7 +57,8 @@
 }
 
 html,
-body {
+body,
+#root {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
