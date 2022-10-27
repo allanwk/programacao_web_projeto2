@@ -10,6 +10,8 @@
 
 .menu-container {
   padding: 0 80px;
+  height: 100%;
+  overflow-y: scroll;
 }
 
 .offset {
@@ -43,12 +45,26 @@
   cursor: pointer;
 }
 
-.mobile-login-button {
+.menu-button-container {
   position: absolute;
-  bottom: 15px;
+  bottom: 0;
   right: 0;
   left: 0;
   margin: 0 auto;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 5px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1) 35%
+  );
+}
+
+.mobile-login-button {
   height: 55px;
   width: 95%;
   max-width: 500px;
@@ -83,6 +99,7 @@
   height: 25px;
   top: 50%;
   transform: translateY(-50%);
+  cursor: pointer;
 }
 
 .menu-search {

@@ -4,19 +4,27 @@ import Feed from "./components/Feed";
 import MobileMenu from "./components/MobileMenu";
 import LandingContainer from "./components/LandingContainer";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState(null);
   const [reloadNewsIdx, setReloadNews] = useState(0);
-  const [menuOpen, setMenuOpen] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
   function reloadNews() {
     setReloadNews(reloadNewsIdx + 1);
   }
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.querySelector("html").classList.add("lock-scroll");
+    } else {
+      document.querySelector("html").classList.remove("lock-scroll");
+    }
+  }, [menuOpen]);
 
   return (
     <div className="App">
