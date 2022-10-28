@@ -68,7 +68,7 @@ export default function MobileMenu({
   }
 
   return (
-    <div className={"menu" + (menuOpen ? "" : " offset")}>
+    <div className={"menu offset hidden"} id="menu">
       <div className="menu-container">
         <div className="menu-search-container">
           <input

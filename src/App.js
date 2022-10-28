@@ -24,6 +24,20 @@ function App() {
     } else if (!menuOpen && !modalOpen) {
       document.querySelector("html").classList.remove("lock-scroll");
     }
+
+    if (menuOpen) {
+      document.getElementById("menu").classList.remove("hidden");
+      setTimeout(
+        () => document.getElementById("menu").classList.remove("offset"),
+        5
+      );
+    } else {
+      document.getElementById("menu").classList.add("offset");
+      setTimeout(
+        () => document.getElementById("menu").classList.add("hidden"),
+        400
+      );
+    }
   }, [menuOpen, modalOpen]);
 
   return (
