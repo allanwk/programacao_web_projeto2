@@ -12,6 +12,21 @@
   backdrop-filter: blur(5px);
 }
 
+.modal-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-title > * {
+  display: block;
+}
+
+.modal-title svg {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
 .login {
   width: clamp(350px, 50%, 500px);
   margin: 0 auto;
