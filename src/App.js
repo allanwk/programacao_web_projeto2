@@ -18,6 +18,22 @@ function App() {
     setReloadNews(reloadNewsIdx + 1);
   }
 
+  function logout() {
+    localStorage.removeItem("token");
+    setLoggedIn(false);
+  }
+
+  function login(token) {
+    localStorage.setItem("token", token);
+    setLoggedIn(true);
+  }
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setLoggedIn(true);
+    }
+  }, []);
+
   useEffect(() => {
     if (menuOpen || modalOpen) {
       document.querySelector("html").classList.add("lock-scroll");
@@ -44,7 +60,8 @@ function App() {
     <div className="App">
       <Header
         loggedIn={loggedIn}
-        setLoggedIn={setLoggedIn}
+        login={login}
+        logout={logout}
         setQuery={setQuery}
         query={query}
         reloadNews={reloadNews}
@@ -64,6 +81,7 @@ function App() {
         setQuery={setQuery}
         reloadNews={reloadNews}
         loggedIn={loggedIn}
+        logout={logout}
       />
       <LandingContainer />
       <Feed

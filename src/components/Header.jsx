@@ -8,7 +8,8 @@ import PuffLoader from "react-spinners/PuffLoader";
 
 function Header({
   loggedIn,
-  setLoggedIn,
+  login,
+  logout,
   setQuery,
   query,
   reloadNews,
@@ -42,17 +43,6 @@ function Header({
   function toggleModal() {
     setModalOpen(!modalOpen);
   }
-
-  function logout() {
-    localStorage.removeItem("token");
-    setLoggedIn(false);
-  }
-
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setLoggedIn(true);
-    }
-  }, []);
 
   let searchIcon = null;
   if (loggedIn) {
@@ -96,9 +86,7 @@ function Header({
 
   return (
     <>
-      {modalOpen ? (
-        <Login toggleModal={toggleModal} setLoggedIn={setLoggedIn} />
-      ) : null}
+      {modalOpen ? <Login toggleModal={toggleModal} login={login} /> : null}
       <header>
         <nav>
           <a href="#" className="logo-wrapper">

@@ -1,7 +1,7 @@
 import PuffLoader from "react-spinners/PuffLoader";
 import { useState } from "react";
 
-export default function Login({ toggleModal, setLoggedIn }) {
+export default function Login({ toggleModal, login }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState(null);
@@ -34,11 +34,10 @@ export default function Login({ toggleModal, setLoggedIn }) {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         let response = JSON.parse(xhr.responseText);
         if ("token" in response) {
-          localStorage.setItem("token", response.token);
+          login(response.token);
           setMessage("Logged in successfully!");
           setTimeout(() => {
             toggleModal();
-            setLoggedIn(true);
           }, 500);
         } else {
           setMessage("Invalid credentials!");

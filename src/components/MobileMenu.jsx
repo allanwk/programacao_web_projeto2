@@ -9,6 +9,7 @@ export default function MobileMenu({
   setQuery,
   reloadNews,
   loggedIn,
+  logout,
 }) {
   const menuItems = [
     {
@@ -68,6 +69,33 @@ export default function MobileMenu({
     setQuery(e.target.value);
   }
 
+  function handleLoginButtonClick() {
+    if (loggedIn) {
+      logout();
+    } else {
+      toggleModal();
+    }
+    setMenuOpen(false);
+  }
+
+  const buttonIcon = loggedIn ? null : (
+    <svg
+      stroke="rgb(255, 255, 255)"
+      fill="none"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      style={{ marginRight: "0.45rem", fontSize: "1.12rem" }}
+      height="1em"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line x1="22" y1="2" x2="11" y2="13"></line>
+      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+    </svg>
+  );
+
   return (
     <div className={"menu offset hidden"} id="menu">
       <div className="menu-container">
@@ -111,29 +139,9 @@ export default function MobileMenu({
           ))}
         </ul>
         <div className="menu-button-container">
-          <div
-            className="mobile-login-button"
-            onClick={() => {
-              toggleModal();
-              setMenuOpen(false);
-            }}
-          >
-            <svg
-              stroke="rgb(255, 255, 255)"
-              fill="none"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              style={{ marginRight: "0.45rem", fontSize: "1.12rem" }}
-              height="1em"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <line x1="22" y1="2" x2="11" y2="13"></line>
-              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-            </svg>
-            <p>Login</p>
+          <div className="mobile-login-button" onClick={handleLoginButtonClick}>
+            {buttonIcon}
+            {loggedIn ? <p>Logout</p> : <p>Login</p>}
           </div>
         </div>
       </div>
