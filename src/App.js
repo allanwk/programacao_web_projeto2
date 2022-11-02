@@ -63,6 +63,7 @@ function App() {
         query={query}
         setQuery={setQuery}
         reloadNews={reloadNews}
+        loggedIn={loggedIn}
       />
       <LandingContainer />
       <Feed

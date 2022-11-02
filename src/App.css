@@ -121,7 +121,7 @@ nav > * {
 }
 
 .search-wrapper {
-  display: grid;
+  display: none;
   place-content: center;
   margin-right: 15px;
   height: 100%;
@@ -131,8 +131,12 @@ nav > * {
   position: relative;
 }
 
-.search-wrapper:hover {
+.search-wrapper.search-wrapper:hover {
   background-color: rgb(244, 244, 244);
+}
+
+.loggedIn {
+  display: grid;
 }
 
 .search-wrapper input {

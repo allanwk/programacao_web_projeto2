@@ -8,6 +8,7 @@ export default function MobileMenu({
   query,
   setQuery,
   reloadNews,
+  loggedIn,
 }) {
   const menuItems = [
     {
@@ -70,31 +71,33 @@ export default function MobileMenu({
   return (
     <div className={"menu offset hidden"} id="menu">
       <div className="menu-container">
-        <div className="menu-search-container">
-          <input
-            className="menu-search"
-            placeholder="Search stories"
-            onChange={updateQuery}
-          />
-          <svg
-            stroke="currentColor"
-            fill="none"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            height="1em"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-            onClick={() => {
-              reloadNews();
-              setMenuOpen(false);
-            }}
-          >
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </div>
+        {loggedIn ? (
+          <div className="menu-search-container">
+            <input
+              className="menu-search"
+              placeholder="Search stories"
+              onChange={updateQuery}
+            />
+            <svg
+              stroke="currentColor"
+              fill="none"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+              onClick={() => {
+                reloadNews();
+                setMenuOpen(false);
+              }}
+            >
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        ) : null}
         <ul className="menu-items">
           {menuItems.map((category, index) => (
             <li key={index}>
